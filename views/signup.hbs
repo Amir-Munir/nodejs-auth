@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script>
+      function signUp() {  event.preventDefault(); const
+      name = document.getElementById("name").value; const email =
+      document.getElementById("email").value; const password =
+      document.getElementById("password").value; console.log(name, email,
+      password); const url = "http://localhost:1000/signup"; fetch(url, {
+      method: "POST", headers: { "Content-Type": "application/json", }, body:
+      JSON.stringify({ name: name, email: email, password: password }), })
+      .then((response) => console.log(response)) .then((data) =>
+      console.log(data)); }
+    </script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div class="form_div">
+        <p class="form_label">SIGNUP FORM</p>
+        <p><input type="text" placeholder="Enter Name" id="name" /></p>
+        <p><input style="width: 230px !important; height:40px !important" type="email" placeholder="Enter Email" id="email" /></p>
+        <p><input type="password" placeholder="Password" id="password" /></p>
+				<p><input type="password" placeholder="ConfirmPassword" id="confirm-password" /></p>
+        <div class="cont_btn">
+          <button onclick="signUp()" class="btn_sign">SIGN UP</button>
+        </div>
+      </div>
+         {{#if message}}
+						<h4 class="alert alert-danger mt-4" >{{message}}</h4>
+				 {{/if}}
+    </div>
+  </body>
+
+</html>

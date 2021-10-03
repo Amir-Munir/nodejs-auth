@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <div class="form_div">
+        <p class="form_label">LOGIN FORM</p>
+        <p>{{message}}</p>
+        <form>
+          <p><input type="text" placeholder="Enter Email" id="email" /></p>
+          <p><input
+              type="password"
+              placeholder="**********"
+              id="password"
+            /></p>
+          <div class="cont_btn">
+            <button onclick="signIn()" class="btn_sign">SIGN IN</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </body>
+
+  <script>
+   function signIn() {
+    event.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const url = "http://localhost:1000/signin";
+    
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, password: password }),
+    })
+      .then((response) => {
+        if (response.ok)
+          return alert("Success");
+        return alert("Error signing in.");
+      })
+  }
+
+
+  </script>
+
+</html>
