@@ -61,6 +61,7 @@ exports.signin = async (req, res) => {
     throw new Error(error);
   }
 };
+
 exports.signup = async (req, res) => {
   const signUpData = req.body;
 
